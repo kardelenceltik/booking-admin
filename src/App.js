@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import CategoriesList from "./components/CategoriesList";
+import CreateCategoryForm from "./components/CreateCategoryForm";
+import UserCreateForm from "./components/UserCreateForm";
+import UserList from "./components/UserList";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <UserCreateForm />
+      <UserList />
+      <CreateCategoryForm />
+      <CategoriesList />
     </div>
   );
 }
