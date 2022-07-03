@@ -27,3 +27,7 @@
 .test {
   background-color: red;
 }
+.user-management-add-button-area {
+  display: flex;
+  justify-content: right;
+}

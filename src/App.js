@@ -16,10 +16,10 @@ function App() {
         <Sidebar />
       </div>
       <div style={{ height: "75px" }}></div>
-      <UserCreateForm />
-      <UserList />
+      {/* <UserCreateForm />
+      <UserList /> */}
       {/* <CreateCategoryForm /> */}
-      <CategoriesList />
+      {/* <CategoriesList /> */}
     </div>
   );
 }
