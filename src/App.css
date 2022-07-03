@@ -1,0 +1,29 @@
+.search-icon-wrapper {
+  height: 100%;
+  position: "absolute";
+  pointer-events: "none";
+  display: "flex";
+  align-items: "center";
+  justify-content: "center";
+}
+.user-create-form-container {
+  display: flex;
+  justify-content: center;
+}
+.user-create-form-card {
+  width: 50%;
+}
+.navbar-color {
+  background-color: #10143b !important;
+}
+.navbar-location-option {
+  display: flex;
+  justify-content: space-between;
+}
+.navbar-left-tools {
+  display: flex;
+  align-items: center;
+}
+.test {
+  background-color: red;
+}
