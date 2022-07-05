@@ -1,9 +1,21 @@
 import React, { useEffect, useState } from "react";
-import Stack from "@mui/material/Stack";
+import EmailIcon from "@mui/icons-material/Email";
 import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import PhoneIcon from "@mui/icons-material/Phone";
+import KeyIcon from "@mui/icons-material/Key";
+import Box from "@mui/material/Box";
+
+import AccountCircle from "@mui/icons-material/AccountCircle";
 import axios from "axios";
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
+  const [name, setName] = useState([]);
+  const [surname, setSurname] = useState([]);
+  const [mail, setMail] = useState([]);
+  const [phone, setPhone] = useState([]);
+  const [password, setPassword] = useState([]);
+
   const getUserListHandler = () => {
     axios.get("http://localhost:9292/user/get-all-users").then((response) => {
       console.log(response);
@@ -13,6 +25,23 @@ const UserManagement = () => {
   useEffect(() => {
     getUserListHandler();
   }, []);
+
+  const createUserHandler = () => {
+    axios
+      .post("http://localhost:9292/user/create", {
+        name,
+        surname,
+        mail,
+        phone,
+        password,
+      })
+      .then((response) => {
+        alert("Eklendi");
+      })
+      .catch((error) => {
+        alert(error.response.statusText);
+      });
+  };
   return (
     <div>
       <div className="user-management-add-button-area">
@@ -61,7 +90,7 @@ const UserManagement = () => {
 
       {/* <!-- Modal --> */}
       <div
-        class="modal fade exampleModal"
+        class="modal fade exampleModal mt-5"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
@@ -70,7 +99,7 @@ const UserManagement = () => {
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">
-                Modal title
+                Create User Form
               </h5>
               <button
                 type="button"
@@ -79,7 +108,78 @@ const UserManagement = () => {
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">...</div>
+            <div class="modal-body">
+              <div>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-around",
+                  }}
+                >
+                  <div className="icon-input-group">
+                    <AccountCircle sx={{ color: "action.active", mr: 1 }} />
+                    <TextField
+                      id="input-with-sx"
+                      label="Name"
+                      variant="standard"
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                  <div className="icon-input-group">
+                    <AccountCircle sx={{ color: "action.active", mr: 1 }} />
+                    <TextField
+                      id="input-with-sx"
+                      label="Surname"
+                      variant="standard"
+                      onChange={(e) => setSurname(e.target.value)}
+                    />
+                  </div>
+                </Box>
+              </div>
+              <div>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-around",
+                  }}
+                >
+                  <div className="icon-input-group">
+                    <EmailIcon sx={{ color: "action.active", mr: 1 }} />
+                    <TextField
+                      id="input-with-sx"
+                      label="Mail"
+                      variant="standard"
+                      onChange={(e) => setMail(e.target.value)}
+                    />
+                  </div>
+                  <div className="icon-input-group">
+                    <PhoneIcon sx={{ color: "action.active", mr: 1 }} />
+                    <TextField
+                      id="input-with-sx"
+                      label="Phone"
+                      variant="standard"
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
+                  </div>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    marginLeft: 2.5,
+                  }}
+                >
+                  <div className="icon-input-group pl-5">
+                    <KeyIcon sx={{ color: "action.active", mr: 1 }} />
+                    <TextField
+                      id="input-with-sx"
+                      label="Password"
+                      variant="standard"
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
+                </Box>
+              </div>
+            </div>
             <div class="modal-footer">
               <button
                 type="button"
@@ -88,7 +188,11 @@ const UserManagement = () => {
               >
                 Close
               </button>
-              <button type="button" class="btn btn-primary">
+              <button
+                type="button"
+                class="btn btn-primary"
+                onClick={() => createUserHandler()}
+              >
                 Save changes
               </button>
             </div>

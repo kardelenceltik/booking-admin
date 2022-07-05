@@ -31,3 +31,11 @@
   display: flex;
   justify-content: right;
 }
+.add-user-modal-body {
+  display: flex;
+  justify-content: center;
+}
+.icon-input-group {
+  display: flex;
+  align-items: flex-end;
+}
